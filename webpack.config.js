@@ -1,4 +1,5 @@
 const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -12,11 +13,22 @@ module.exports = {
       },
     ],
   },
+  // Using the CopyPlugin to CopyStatic files like the manifest file
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve('src/manifest.json'),
+          to: path.resolve('dist'),
+        },
+      ],
+    }),
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve('dist'),
   },
 }
