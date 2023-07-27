@@ -18,6 +18,16 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
       },
+      {
+        // Using the style loader and css loader to load css files
+        use: ['style-loader', 'css-loader'],
+        test: /\.css$/i,
+      }
+      ,{
+        //asset/resource allows us to load images and fonts
+        type: 'asset/resource',
+        test: /\.(jpg|jpeg|woff|woff2|eot|ttf|svg)$/,
+      }
     ],
   },
   plugins: [
